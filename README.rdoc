@@ -1,10 +1,10 @@
-==TODO==
-*Generators
-*AnonymousUser
-*Write documentation
+=TODO
+* Generators
+* AnonymousUser
+* Write documentation
 
-*Self Cleanup
-*Query optimisation
-*Refactor
-*Work out a way to do non_destructive changes (ie: rely on save)
-*Can_not should be able to optionally deny access even if a role grants permission
+* Self Cleanup
+* Query optimisation
+* Refactor
+* Work out a way to do non_destructive changes (ie: rely on save)
+* Can_not should be able to optionally deny access even if a role grants permission
