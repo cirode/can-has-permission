@@ -50,7 +50,7 @@ module CanHasPermission
   end
 end
 
-require File.join(File.dirname(__FILE__), 'can_has_permission', 'has_permission')
-require File.join(File.dirname(__FILE__), 'can_has_permission', 'permission')
-require File.join(File.dirname(__FILE__), 'can_has_permission', 'role')
-require File.join(File.dirname(__FILE__), 'can_has_permission', 'has_role')
+require File.join(File.dirname(__FILE__), 'can-has-permission', 'has_permission')
+require File.join(File.dirname(__FILE__), 'can-has-permission', 'permission')
+require File.join(File.dirname(__FILE__), 'can-has-permission', 'role')
+require File.join(File.dirname(__FILE__), 'can-has-permission', 'has_role')

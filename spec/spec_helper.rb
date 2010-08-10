@@ -1,6 +1,6 @@
 $LOAD_PATH << File.join(File.dirname(__FILE__), '..', 'lib')
 require 'active_record'
-require 'can_has_permission'
+require 'can-has-permission'
 require 'rubygems'
 require 'ruby-debug'
 
