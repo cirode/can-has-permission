@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{can-has-permission}
-  s.version = "0.0.2"
+  s.version = "0.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Chris Rode"]
@@ -21,16 +21,16 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "can-has-permission.gemspec",
+     "generators/can-has-permission-generator.rb",
+     "generators/migrate/create_has_permissions.rb",
+     "generators/migrate/create_has_roles.rb",
+     "generators/migrate/create_permissions.rb",
+     "generators/migrate/create_roles.rb",
      "lib/can-has-permission.rb",
      "lib/can-has-permission/has_permission.rb",
      "lib/can-has-permission/has_role.rb",
      "lib/can-has-permission/permission.rb",
      "lib/can-has-permission/role.rb",
-     "lib/generators/can-has-permission-generator.rb",
-     "lib/generators/migrate/create_has_permissions.rb",
-     "lib/generators/migrate/create_has_roles.rb",
-     "lib/generators/migrate/create_permissions.rb",
-     "lib/generators/migrate/create_roles.rb",
      "spec/spec_helper.rb",
      "spec/tests/can_has_permission_spec.rb",
      "spec/tests/has_permission_spec.rb",
