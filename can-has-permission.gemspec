@@ -16,9 +16,11 @@ Gem::Specification.new do |s|
     "README.rdoc"
   ]
   s.files = [
-    "README.rdoc",
+    ".gitignore",
+     "README.rdoc",
      "Rakefile",
      "VERSION",
+     "can-has-permission.gemspec",
      "lib/can-has-permission.rb",
      "lib/can-has-permission/has_permission.rb",
      "lib/can-has-permission/has_role.rb",
