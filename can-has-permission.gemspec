@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{can-has-permission}
-  s.version = "0.0.1"
+  s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Chris Rode"]
-  s.date = %q{2010-08-10}
+  s.date = %q{2010-08-11}
   s.description = %q{simple permissions based authorisation with roles}
   s.email = %q{cirode@gmail.com}
   s.extra_rdoc_files = [
@@ -26,6 +26,11 @@ Gem::Specification.new do |s|
      "lib/can-has-permission/has_role.rb",
      "lib/can-has-permission/permission.rb",
      "lib/can-has-permission/role.rb",
+     "lib/generators/can-has-permission-generator.rb",
+     "lib/generators/migrate/create_has_permissions.rb",
+     "lib/generators/migrate/create_has_roles.rb",
+     "lib/generators/migrate/create_permissions.rb",
+     "lib/generators/migrate/create_roles.rb",
      "spec/spec_helper.rb",
      "spec/tests/can_has_permission_spec.rb",
      "spec/tests/has_permission_spec.rb",
