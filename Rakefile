@@ -14,7 +14,7 @@ begin
     gemspec.summary = "simple permissions based authorisation"
     gemspec.description = "simple permissions based authorisation with roles"
     gemspec.email = "cirode@gmail.com"
-    gemspec.homepage = "http://github.com/cirode/can_has_permission"
+    gemspec.homepage = "http://github.com/cirode/can-has-permission"
     gemspec.authors = ["Chris Rode"]
   end
   Jeweler::GemcutterTasks.new

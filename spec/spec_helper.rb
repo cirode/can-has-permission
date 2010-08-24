@@ -4,31 +4,35 @@ require 'can-has-permission'
 require 'rubygems'
 require 'ruby-debug'
 
-ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database => ":memory:")
-
 def reset_database
   ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database => ":memory:")
   ActiveRecord::Schema.define(:version => 1) do
-    create_table :roles do |t|
+    create_table :role_types do |t|
       t.string :name, :null => false
+      t.timestamps
+    end
+    
+    create_table :anonymous do |t|
+      t.string :name, :null => false
+      t.timestamps
+    end
+    
+    create_table :permission_types do |t|
+      t.string :name, :null => false
+      t.timestamps
+    end
+    
+    create_table :roles do |t|
+      t.string :permissible_type, :null => false
+      t.integer :permissible_id, :null => false
+      t.integer :role_type_id, :null => false
       t.timestamps
     end
     
     create_table :permissions do |t|
-      t.string :name, :null => false
-      t.timestamps
-    end
-    
-    create_table :has_roles do |t|
-      t.string :model, :null => false
-      t.integer :model_id, :null => false
-      t.integer :role_id, :null => false
-      t.timestamps
-    end
-    create_table :has_permissions do |t|
-      t.string :model, :null => false
-      t.integer :model_id, :null => false
-      t.integer :permission_id, :null => false
+      t.string :permissible_type, :null => false
+      t.integer :permissible_id, :null => false
+      t.integer :permission_type_id, :null => false
       t.timestamps
     end
   end

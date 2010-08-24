@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{can-has-permission}
-  s.version = "0.0.3"
+  s.version = "0.0.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Chris Rode"]
-  s.date = %q{2010-08-11}
+  s.date = %q{2010-08-25}
   s.description = %q{simple permissions based authorisation with roles}
   s.email = %q{cirode@gmail.com}
   s.extra_rdoc_files = [
@@ -22,34 +22,25 @@ Gem::Specification.new do |s|
      "VERSION",
      "can-has-permission.gemspec",
      "generators/can-has-permission-generator.rb",
-     "generators/migrate/create_has_permissions.rb",
-     "generators/migrate/create_has_roles.rb",
-     "generators/migrate/create_permissions.rb",
-     "generators/migrate/create_roles.rb",
      "lib/can-has-permission.rb",
-     "lib/can-has-permission/has_permission.rb",
-     "lib/can-has-permission/has_role.rb",
      "lib/can-has-permission/permission.rb",
      "lib/can-has-permission/role.rb",
      "spec/spec_helper.rb",
-     "spec/tests/can_has_permission_spec.rb",
-     "spec/tests/has_permission_spec.rb",
-     "spec/tests/has_role_spec.rb",
      "spec/tests/permission_spec.rb",
      "spec/tests/role_spec.rb"
   ]
-  s.homepage = %q{http://github.com/cirode/can_has_permission}
+  s.homepage = %q{http://github.com/cirode/can-has-permission}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{simple permissions based authorisation}
   s.test_files = [
     "spec/spec_helper.rb",
-     "spec/tests/can_has_permission_spec.rb",
-     "spec/tests/has_permission_spec.rb",
-     "spec/tests/has_role_spec.rb",
+     "spec/tests/anonymous_spec.rb",
      "spec/tests/permission_spec.rb",
-     "spec/tests/role_spec.rb"
+     "spec/tests/permission_type_spec.rb",
+     "spec/tests/role_spec.rb",
+     "spec/tests/role_type_spec.rb"
   ]
 
   if s.respond_to? :specification_version then

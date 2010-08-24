@@ -1,0 +1,7 @@
+module CanHasPermission
+  class Anonymous < ActiveRecord::Base
+    validates_presence_of :name
+    validates_uniqueness_of :name
+    include CanHasPermission
+  end
+end
