@@ -1,0 +1,5 @@
+Description:
+    Generates required migrations.
+
+Example:
+    ./script/generate can-has-permission

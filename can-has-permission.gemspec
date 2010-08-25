@@ -16,18 +16,18 @@ Gem::Specification.new do |s|
     "README.rdoc"
   ]
   s.files = [
-    ".gitignore",
-     "README.rdoc",
-     "Rakefile",
-     "VERSION",
-     "can-has-permission.gemspec",
-     "generators/can-has-permission-generator.rb",
+    "generators/can_has_permission_generator.rb",
+     "generators/templates/can_has_permission_create_anonymous.rb",
+     "generators/templates/can_has_permission_create_permission_types.rb",
+     "generators/templates/can_has_permission_create_permissions.rb",
+     "generators/templates/can_has_permission_create_role_types.rb",
+     "generators/templates/can_has_permission_create_roles.rb",
      "lib/can-has-permission.rb",
+     "lib/can-has-permission/anonymous.rb",
      "lib/can-has-permission/permission.rb",
+     "lib/can-has-permission/permission_type.rb",
      "lib/can-has-permission/role.rb",
-     "spec/spec_helper.rb",
-     "spec/tests/permission_spec.rb",
-     "spec/tests/role_spec.rb"
+     "lib/can-has-permission/role_type.rb"
   ]
   s.homepage = %q{http://github.com/cirode/can-has-permission}
   s.rdoc_options = ["--charset=UTF-8"]
