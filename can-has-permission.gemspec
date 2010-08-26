@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{can-has-permission}
-  s.version = "0.2.2"
+  s.version = "0.2.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Chris Rode"]
@@ -20,7 +20,6 @@ Gem::Specification.new do |s|
      "generators/templates/can_has_permission_create_anonymous.rb",
      "generators/templates/can_has_permission_create_permission_maps.rb",
      "generators/templates/can_has_permission_create_role_maps.rb",
-     "lib/action_controller.rb",
      "lib/can-has-permission.rb",
      "lib/can-has-permission/anonymous.rb",
      "lib/can-has-permission/permission.rb",
