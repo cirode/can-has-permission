@@ -3,7 +3,10 @@ module ActionController
     module ClassMethods
       def requires_permission(permission)
         before_filter lambda { |instance| 
-          instance.send(:permission_denied, permission) unless instance.send(:current_user).can?(permission)
+          unless instance.send(:current_user).can?(permission)
+            instance.send(:permission_denied, permission)
+            return false
+          end
         }
       end
     end
