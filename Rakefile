@@ -32,6 +32,7 @@ begin
     gemspec.files = files
     gemspec.homepage = "http://github.com/cirode/can-has-permission"
     gemspec.authors = ["Chris Rode"]
+    gemspec.add_dependency  'rails', '>= 2.3'
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
