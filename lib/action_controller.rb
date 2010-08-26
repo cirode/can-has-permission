@@ -7,7 +7,7 @@ module ActionController
             instance.send(:permission_denied, permission)
             return false
           end
-        }
+        } 
       end
     end
   end
