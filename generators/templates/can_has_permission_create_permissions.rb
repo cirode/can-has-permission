@@ -1,4 +1,4 @@
-class CanHasPermissionCreatePermission < ActiveRecord::Migration
+class CanHasPermissionCreatePermissions < ActiveRecord::Migration
   def self.up
     create_table :permission do |t|
       t.string :name, :null => false
