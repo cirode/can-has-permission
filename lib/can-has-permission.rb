@@ -2,17 +2,19 @@ module CanHasPermission
   
   def self.included(base)
     base.class_eval do
-      has_many :roles, :as => 'permissible', :class_name => 'CanHasPermission::Role'
-      has_many :permissions, :as => 'permissible', :class_name => 'CanHasPermission::Permission'
-      accepts_nested_attributes_for :permissions
-      accepts_nested_attributes_for :roles
+      has_many :role_maps, :as => 'permissible', :class_name => 'CanHasPermission::RoleMap'
+      has_many :permission_maps, :as => 'permissible', :class_name => 'CanHasPermission::PermissionMap'
+      has_many :permissions, :through => :permission_maps
+      has_many :roles, :through => :role_maps
+      accepts_nested_attributes_for :role_maps
+      accepts_nested_attributes_for :permission_maps
     end
   end
   
   def can?(permission)
     return true if (!self.permissions.select{|p| p.name == permission.to_s}.empty?)
     self.roles.each do |role|
-      return true if role.role_type.can?(permission)
+      return true if role.can?(permission)
     end
     false
   end
@@ -22,8 +24,9 @@ module CanHasPermission
   end
 end
 
+require File.join(File.dirname(__FILE__), 'can-has-permission', 'permission_map')
 require File.join(File.dirname(__FILE__), 'can-has-permission', 'permission')
-require File.join(File.dirname(__FILE__), 'can-has-permission', 'permission_type')
+require File.join(File.dirname(__FILE__), 'can-has-permission', 'role_map')
 require File.join(File.dirname(__FILE__), 'can-has-permission', 'role')
-require File.join(File.dirname(__FILE__), 'can-has-permission', 'role_type')
 require File.join(File.dirname(__FILE__), 'can-has-permission', 'anonymous')
+require File.join(File.dirname(__FILE__), 'action_controller')

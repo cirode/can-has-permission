@@ -51,17 +51,18 @@ describe CanHasPermission::Anonymous do
       end
     end
   end
+  
   describe "creating a role_type with permissions" do
     before(:each) do
       @role_type_name = 'type'
-      @role_type = CanHasPermission::RoleType.create!(:name => @role_type_name)
+      @role_type = CanHasPermission::Role.create!(:name => @role_type_name)
       @role_type.permissions.create!(:name => 'perm')
       @role_type.reload
     end
     describe "and adding the role to anon" do
       before(:each) do
         @role = CanHasPermission::Anonymous.create!(:name => 'user')
-        @role.roles.create!(:name => @role_type_name)
+        @role.role_maps.create!(:role => @role_type)
       end
       describe "#can?" do
         it "should return true when given the permission" do
@@ -72,5 +73,22 @@ describe CanHasPermission::Anonymous do
         end
       end
     end
+  end
+  
+  it "using nested attributes should save" do
+    role =CanHasPermission::Role.create!(:name => 'role')
+    anon = CanHasPermission::Anonymous.create(:name => 'user', :role_maps_attributes => [{:role => role}])
+    anon.reload
+    anon.role_maps.should_not be_empty
+    anon.roles.should_not be_empty
+    anon.role_maps.first.permissible_id.should_not be_nil
+  end
+  it "using nested attributes should save" do
+    role =CanHasPermission::Permission.create!(:name => 'role')
+    anon = CanHasPermission::Anonymous.create(:name => 'user', :permission_maps_attributes => [{:permission => role}])
+    anon.reload
+    anon.permission_maps.should_not be_empty
+    anon.permissions.should_not be_empty
+    anon.permission_maps.first.permissible_id.should_not be_nil
   end
 end

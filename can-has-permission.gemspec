@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Chris Rode"]
-  s.date = %q{2010-08-25}
+  s.date = %q{2010-08-26}
   s.description = %q{simple permissions based authorisation with roles}
   s.email = %q{cirode@gmail.com}
   s.extra_rdoc_files = [
@@ -18,16 +18,15 @@ Gem::Specification.new do |s|
   s.files = [
     "generators/can_has_permission_generator.rb",
      "generators/templates/can_has_permission_create_anonymous.rb",
-     "generators/templates/can_has_permission_create_permission_types.rb",
-     "generators/templates/can_has_permission_create_permissions.rb",
-     "generators/templates/can_has_permission_create_role_types.rb",
-     "generators/templates/can_has_permission_create_roles.rb",
+     "generators/templates/can_has_permission_create_permission_maps.rb",
+     "generators/templates/can_has_permission_create_role_maps.rb",
+     "lib/action_controller.rb",
      "lib/can-has-permission.rb",
      "lib/can-has-permission/anonymous.rb",
      "lib/can-has-permission/permission.rb",
-     "lib/can-has-permission/permission_type.rb",
+     "lib/can-has-permission/permission_map.rb",
      "lib/can-has-permission/role.rb",
-     "lib/can-has-permission/role_type.rb"
+     "lib/can-has-permission/role_map.rb"
   ]
   s.homepage = %q{http://github.com/cirode/can-has-permission}
   s.rdoc_options = ["--charset=UTF-8"]
@@ -37,10 +36,10 @@ Gem::Specification.new do |s|
   s.test_files = [
     "spec/spec_helper.rb",
      "spec/tests/anonymous_spec.rb",
+     "spec/tests/permission_map_spec.rb",
      "spec/tests/permission_spec.rb",
-     "spec/tests/permission_type_spec.rb",
-     "spec/tests/role_spec.rb",
-     "spec/tests/role_type_spec.rb"
+     "spec/tests/role_map_spec.rb",
+     "spec/tests/role_spec.rb"
   ]
 
   if s.respond_to? :specification_version then

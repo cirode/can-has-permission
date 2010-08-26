@@ -7,7 +7,7 @@ require 'ruby-debug'
 def reset_database
   ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database => ":memory:")
   ActiveRecord::Schema.define(:version => 1) do
-    create_table :role_types do |t|
+    create_table :roles do |t|
       t.string :name, :null => false
       t.timestamps
     end
@@ -17,22 +17,22 @@ def reset_database
       t.timestamps
     end
     
-    create_table :permission_types do |t|
+    create_table :permissions do |t|
       t.string :name, :null => false
       t.timestamps
     end
     
-    create_table :roles do |t|
+    create_table :role_maps do |t|
       t.string :permissible_type, :null => false
       t.integer :permissible_id, :null => false
-      t.integer :role_type_id, :null => false
+      t.integer :role_id, :null => false
       t.timestamps
     end
     
-    create_table :permissions do |t|
+    create_table :permission_maps do |t|
       t.string :permissible_type, :null => false
       t.integer :permissible_id, :null => false
-      t.integer :permission_type_id, :null => false
+      t.integer :permission_id, :null => false
       t.timestamps
     end
   end

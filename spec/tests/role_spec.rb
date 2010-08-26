@@ -1,58 +1,37 @@
 require File.join(File.dirname(__FILE__), '..', 'spec_helper')
 
 describe CanHasPermission::Role do
-  it "created with all attributes should be valid" do
-    role = CanHasPermission::Role.new(:permissible_id => 1, :permissible_type => 'Object', :name => 'role')
+  it "should be valid with a name" do
+    role = CanHasPermission::Role.new(:name => 'Bingo')
     role.should be_valid
   end
-  it "should be invalid without a name" do
-    role = CanHasPermission::Role.new(:permissible_id => 1, :permissible_type => 'Object')
-    role.should be_invalid
+  it "should not be valid without a name" do
+    role = CanHasPermission::Role.new()
+    role.should_not be_valid
   end
-  it "two roles with the same object and role should not be valid" do
-    role1 = CanHasPermission::Role.create!(:permissible_id => 1, :permissible_type => 'Object', :name => 'role')
-    role2 = CanHasPermission::Role.new(:permissible_id => 1, :permissible_type => 'Object', :name => 'role')
+  it "should not be valid when it has a name that already exists" do
+    name = 'the same'
+    role1 = CanHasPermission::Role.create!(:name => 'the same')
+    role2 = CanHasPermission::Role.new(:name => 'the same')
+    role1.should be_valid
+    role1.id.should_not be_nil
     role2.should_not be_valid
   end
-  it "two roles with the same object should be valid" do
-    role1 = CanHasPermission::Role.create!(:permissible_id => 1, :permissible_type => 'Object', :name => 'role')
-    role2 = CanHasPermission::Role.new(:permissible_id => 2, :permissible_type => 'Object', :name => 'role')
-    role2.should be_valid
-  end
-  describe "with a role type" do
+  describe "creating a role_type with permissions" do
     before(:each) do
-      @role_type = CanHasPermission::RoleType.create!(:name => 'role')
+      @role = CanHasPermission::Role.create!(:name => 'joe')
+      @role.permissions.create!(:name => 'perm')
+      @role.reload
     end
-    it "should be valid without a name" do
-      role = CanHasPermission::Role.new(:permissible_id => 1, :permissible_type => 'Object', :role_type => @role_type)
-      role.should be_valid
+    it "should have an attached permission" do
+      @role.permissions.should_not be_empty
     end
-  end
-  it "should be invalid without a permissible_id" do
-    role = CanHasPermission::Role.new(:permissible_type => 'Object', :name => 'role')
-    role.should be_invalid
-  end
-  it "should be invalid without a permissible_type" do
-    role = CanHasPermission::Role.new(:permissible_id => 1, :name => 'role', :name => 'role')
-    role.should be_invalid
-  end
-  describe "created with a name and not a type" do
-    before(:each) do
-      @role_name = 'role'
-      @role = CanHasPermission::Role.create!(:permissible_id => 1, :permissible_type => 'Object', :name => @role_name)
-    end
-    it "should create a role_type" do
-      CanHasPermission::RoleType.count(:conditions => {:name => @role_name}).should == 1
-    end
-    describe "and another role of the same type is created" do
-      before(:each) do
-        @role2 = CanHasPermission::Role.create!(:permissible_id => 2, :permissible_type => 'Object', :name => @role_name)        
+    describe "#can?" do
+      it "should return true when given the permission" do
+        @role.can?(:perm).should be_true
       end
-      it "should not create a second role_type" do
-        CanHasPermission::RoleType.count(:conditions => {:name => @role_name}).should == 1        
-      end
-      it "both should have the same role_type instance" do
-        @role2.role_type_id.should == @role.role_type_id
+      it "should return false when given a different permission" do
+        @role.can?(:perm2).should be_false
       end
     end
   end
